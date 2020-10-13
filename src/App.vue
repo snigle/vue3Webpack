@@ -4,11 +4,23 @@
 </template>
 <script lang="ts">
 import {defineComponent, ref} from "vue";
-import {Vue} from "vue-class-component";
-export default class extends Vue{
-    count = 0
-   increase () {
-      this.count++
+
+// This class break the webpack vue-loader
+class Test {
+    myTest = "ok"
+}
+
+export default defineComponent({
+  setup() {
+    const count = ref(0)
+    const increase = () => {
+      count.value++
     }
-};
+
+    return {
+      count,
+      increase,
+    }
+  }
+});
 </script>
